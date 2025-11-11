@@ -21,7 +21,9 @@ Written during the learning process to help learners. Emphasis on clean, underst
 
 **datastructures/** → [Planned](datastructures/DS.md)
 
-**interview_exercises/** → [Merge Array](interview_exercises/mergesortedarray/mergesortedarray.go) · [Reverse](interview_exercises/reversestring/reversestring.go) · [Duplicates](interview_exercises/removeduplicates/removeduplicates.go) · [Whitespaces](interview_exercises/removewhitespaces/removewhitespaces.go) · [Longest](interview_exercises/longestword/longestword.go)
+**leetcode/** → [Two Sum #1](leetcode/twosum/twosum.go) · [Merge Sorted Array #88](leetcode/mergesortedarray/mergesortedarray.go) · [Valid Palindrome #125](leetcode/ispalidrome/ispalidrome.go)
+
+**interview_exercises/** → [Reverse](interview_exercises/reversestring/reversestring.go) · [Duplicates](interview_exercises/removeduplicates/removeduplicates.go) · [Whitespaces](interview_exercises/removewhitespaces/removewhitespaces.go) · [Longest](interview_exercises/longestword/longestword.go)
 
 **informatica/** → [Factorial](informatica/factorial/factorial.go) · [Fibonacci](informatica/fibonacci/fibonacci.go) · [Prime](informatica/isprime/isprime.go) · [Table](informatica/multitable/multitable.go)
 
