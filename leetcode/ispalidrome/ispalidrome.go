@@ -48,7 +48,7 @@ func main() {
 	fmt.Println(isPalindrome("A man, a plan, a canal: Panama"))
 }
 
-// Two-pointer approach: O(n) time, O(1) space
+// // Two-pointer approach: O(n) time, O(1) space
 // func isPalindrome(s string) bool {
 // 	left := 0
 // 	right := len(s) - 1
@@ -70,10 +70,12 @@ func main() {
 // 	}
 // 	return true
 // }
-// // Checks if character is lowercase letter or digit
+
+// // Checks if character is alphanumeric (letter or digit)
 // func isAlphanumeric(c byte) bool {
-// 	return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')
+// 	return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')
 // }
+
 // // Converts uppercase ASCII letter to lowercase using ASCII offset (32)
 // func toLower(c byte) byte {
 // 	if c >= 'A' && c <= 'Z' {
