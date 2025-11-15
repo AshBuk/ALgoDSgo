@@ -25,7 +25,7 @@ func jumpSearch(arr []int, target int) (int, bool) {
 
 	for arr[clampToArrLen(jumpStep, n)-1] < target {
 		startIndex = jumpStep
-		jumpStep += int(math.Sqrt(float64(n)))
+		jumpStep += jumpStep
 		if startIndex >= n {
 			return -1, false
 		}
@@ -47,7 +47,7 @@ func clampToArrLen(jumpStep, n int) int {
 }
 
 func main() {
-	fmt.Println(jumpSearch([]int{1, 2, 3, 4, 5, 7, 9, 11, 13}, 5))
+	fmt.Println(jumpSearch([]int{1, 2, 3, 4, 5, 7, 9, 11, 13}, 11))
 }
 
 /*
