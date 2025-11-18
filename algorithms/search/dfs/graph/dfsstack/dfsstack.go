@@ -1,21 +1,23 @@
-// Breadth-First Search (BFS) - Graph Search
+// Depth-First Search (DFS) - Graph Search (Iterative with Stack)
 // Time: O(V + E) - where V is number of vertices and E is number of edges
-// Space: O(V) - for visited map and queue (in worst case, all nodes in queue)
+// Space: O(V) - for visited map and explicit stack
 
 package main
 
 import "fmt"
 
-func FindNodeBFS(graph map[int][]int, start int, target int) (int, bool) {
-	// Initialize visited map and queue with starting node
+func FindNodeDFSIterative(graph map[int][]int, start int, target int) (int, bool) {
 	visited := make(map[int]bool)
-	queue := []int{start}
-	visited[start] = true
+	stack := []int{start} // ← STACK (LIFO)
 
-	for len(queue) > 0 {
-		node := queue[0]  // FIFO
-		queue = queue[1:] // dequeue visited neighbor
+	for len(stack) > 0 {
+		node := stack[len(stack)-1]  // get last node
+		stack = stack[:len(stack)-1] // and pop from the stack
 
+		if visited[node] { // skip if already visited
+			continue
+		}
+		visited[node] = true // mark current node as visited
 		if node == target {
 			return node, true // we found the target
 		}
@@ -23,8 +25,7 @@ func FindNodeBFS(graph map[int][]int, start int, target int) (int, bool) {
 		neighbors := graph[node]
 		for _, neighbor := range neighbors {
 			if !visited[neighbor] {
-				visited[neighbor] = true
-				queue = append(queue, neighbor) // enqueue unvisited neighbor
+				stack = append(stack, neighbor) // push unvisited neighbor to stack
 			}
 		}
 	}
@@ -42,7 +43,7 @@ func main() {
 		6: {3, 5},
 	}
 
-	node, found := FindNodeBFS(graph, 1, 6)
+	node, found := FindNodeDFSIterative(graph, 1, 6)
 	if found {
 		fmt.Printf("Node %d found\n", node)
 	} else {
@@ -51,10 +52,10 @@ func main() {
 }
 
 /*
-How BFS graph search works:
+How DFS iterative graph search works:
 
-Explores graph level by level using a queue (FIFO - First In, First Out).
-Visits all neighbors at current distance before moving to next level.
+Uses an explicit stack (slice) instead of recursion to achieve depth-first traversal.
+Explores each branch fully before backtracking (depth-first traversal).
 Uses visited map to prevent cycles and repeated visits.
 
 Parameters:
@@ -65,6 +66,17 @@ Parameters:
 Returns:
   - int: the found node value, or 0 if not found
   - bool: true if node was found, false otherwise
+
+Key difference from recursive version:
+  - Uses explicit stack ([]int) instead of call stack
+  - No risk of stack overflow on deep graphs
+  - More control over memory usage
+  - Slightly more verbose code
+
+Stack operations:
+  - Push: stack = append(stack, item)
+  - Pop: item := stack[len(stack)-1]; stack = stack[:len(stack)-1]
+  - LIFO (Last In, First Out) - takes most recently added item
 
 Graph representation - Adjacency List:
 
@@ -102,29 +114,17 @@ Adjacency list breakdown:
     Node 5 → neighbors [2, 6]       (5 connects to 2 and 6)
     Node 6 → neighbors [3, 5]       (6 connects to 3 and 5)
 
-BFS Traversal example (start=1, target=6):
+DFS Iterative Traversal example (start=1, target=6):
 
-Step 1: queue=[1], visited={1}
-        Process node 1 → add neighbors 2,3
+Step 1: stack=[1], visited={}
+        Pop node 1 → mark visited → add neighbors 2,3
 
-Step 2: queue=[2,3], visited={1,2,3}
-        Process node 2 → add neighbors 4,5 (1 already visited)
+Step 2: stack=[2,3], visited={1}
+        Pop node 3 (LIFO!) → mark visited → add neighbor 6 (1 already visited)
 
-Step 3: queue=[3,4,5], visited={1,2,3,4,5}
-        Process node 3 → add neighbor 6 (1 already visited)
+Step 3: stack=[2,6], visited={1,3}
+        Pop node 6 → mark visited → target found! ✓
 
-Step 4: queue=[4,5,6], visited={1,2,3,4,5,6}
-        Process node 4 → no new neighbors
-
-Step 5: queue=[5,6], visited={1,2,3,4,5,6}
-        Process node 5 → no new neighbors (2,6 already visited)
-
-Step 6: queue=[6], visited={1,2,3,4,5,6}
-        Process node 6 → target found! ✓
-
-Key differences from file system BFS:
-  - Works on general graphs (can have cycles)
-  - Requires visited map to prevent infinite loops
-  - Graph nodes can have multiple incoming edges (multiple "parents")
-  - map[int][]int structure instead of os.ReadDir()
+Note: Order may differ from recursive version due to stack operations,
+but both achieve depth-first traversal and find the target.
 */

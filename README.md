@@ -20,8 +20,8 @@ Written during the learning process to help learners. Emphasis on clean, underst
 │   ├── <a href="algorithms/search/binarysearch/binarysearch.go">Binary</a>
 │   ├── <a href="algorithms/search/linearsearch/linearsearch.go">Linear</a>
 │   ├── <a href="algorithms/search/jumpsearch/jumpsearch.go">Jump</a>
-│   ├── <a href="algorithms/search/bfs/filesystem/bfs.go">BFS Filesystem</a> · <a href="algorithms/search/bfs/graph/bfs.go">BFS Graph</a>
-│   └── <a href="algorithms/search/dfs/filesystem/dfs.go">DFS Filesystem</a> · <a href="algorithms/search/dfs/graph/dfs.go">DFS Graph</a>
+│   ├── <a href="algorithms/search/bfs/filesystem/bfs.go">BFS Filesystem</a> · <a href="algorithms/search/bfs/graph/bfsqueue/bfsqueue.go">BFS Graph Queue</a>
+│   └── <a href="algorithms/search/dfs/filesystem/dfs.go">DFS Filesystem</a> · <a href="algorithms/search/dfs/graph/dfsrecursive/dfsrecursive.go">DFS Graph Recursive</a> · <a href="algorithms/search/dfs/graph/dfsstack/dfsstack.go">DFS Graph Stack</a>
 └── <strong>sort/</strong>
     ├── <a href="algorithms/sort/bubblesort/bubblesort.go">Bubble</a>
     ├── <a href="algorithms/sort/selectionsort/selectionsort.go">Selection</a>

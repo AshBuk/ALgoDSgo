@@ -1,4 +1,4 @@
-// Depth-First Search (DFS) - Graph Search
+// Depth-First Search (DFS) - Graph Search (Recursive)
 // Time: O(V + E) - where V is number of vertices and E is number of edges
 // Space: O(V) - for visited map and call stack (recursion depth)
 
@@ -13,7 +13,6 @@ func FindNodeDFS(graph map[int][]int, start int, target int) (int, bool) {
 
 func findNodeDFSRecursive(graph map[int][]int, node int, target int, visited map[int]bool) (int, bool) {
 	visited[node] = true // mark current node as visited
-
 	if node == target {
 		return node, true // we found the target
 	}
