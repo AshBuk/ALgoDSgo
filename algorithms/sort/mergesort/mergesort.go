@@ -41,6 +41,22 @@ func main() {
 }
 
 /*
+Call Stack:
+
+mergeSort([1,2,4,3,6,5,9,8,7])
+├─ mergeSort([1,2,4,3])
+│  ├─ mergeSort([1,2]) -> merge([1],[2]) -> [1,2]
+│  ├─ mergeSort([4,3]) -> merge([4],[3]) -> [3,4]
+│  └─ merge([1,2],[3,4]) -> [1,2,3,4]
+└─ mergeSort([6,5,9,8,7])
+   ├─ mergeSort([6,5]) -> merge([6],[5]) -> [5,6]
+   ├─ mergeSort([9,8,7])
+   │  ├─ mergeSort([9]) -> [9]
+   │  └─ mergeSort([8,7]) -> merge([8],[7]) -> [7,8]
+   │  └─ merge([9],[7,8]) -> [7,8,9]
+   └─ merge([5,6],[7,8,9]) -> [5,6,7,8,9]
+└─ merge([1,2,3,4],[5,6,7,8,9]) -> final [1..9]
+
 How merge sort works:
 
 Example: [1, 2, 4, 3, 6, 5, 9, 8, 7]

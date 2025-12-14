@@ -14,7 +14,6 @@ func heapSort(arr []int) []int {
 	for i := n/2 - 1; i >= 0; i-- {
 		heapify(arr, n, i)
 	}
-
 	// Extract elements from heap one by one
 	for i := n - 1; i > 0; i-- {
 		// Move current root (max) to end
@@ -22,7 +21,6 @@ func heapSort(arr []int) []int {
 		// Heapify reduced heap
 		heapify(arr, i, 0)
 	}
-
 	return arr
 }
 
@@ -36,12 +34,10 @@ func heapify(arr []int, heapSize int, rootIdx int) {
 	if left < heapSize && arr[left] > arr[largest] {
 		largest = left
 	}
-
 	// If right child is larger than largest so far
 	if right < heapSize && arr[right] > arr[largest] {
 		largest = right
 	}
-
 	// If largest is not root, swap and continue heapifying
 	if largest != rootIdx {
 		arr[rootIdx], arr[largest] = arr[largest], arr[rootIdx]
