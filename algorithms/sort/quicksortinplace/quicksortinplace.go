@@ -7,16 +7,22 @@ package main
 
 import "fmt"
 
-func qSortInPlace(arr []int, lo, hi int) {
+func QuickSortInPlace(arr []int) {
+	if len(arr) < 2 {
+		return
+	}
+	quickSort(arr, 0, len(arr)-1)
+}
+
+func quickSort(arr []int, lo, hi int) {
 	if lo < hi {
 		pivotIdx := partition(arr, lo, hi)
-		qSortInPlace(arr, lo, pivotIdx-1) // sort left
-		qSortInPlace(arr, pivotIdx+1, hi) // sort right
+		quickSort(arr, lo, pivotIdx-1)
+		quickSort(arr, pivotIdx+1, hi)
 	}
 }
 
 // Lomuto partition scheme
-// Places pivot element in correct position and returns its index
 func partition(arr []int, lo, hi int) int {
 	pivot := arr[hi]
 	storeIdx := lo - 1
@@ -33,9 +39,7 @@ func partition(arr []int, lo, hi int) int {
 
 func main() {
 	arr := []int{4, 6, 2, 8, 3, 7, 1, 9, 5, 10}
-	lo := 0
-	hi := len(arr) - 1
-	qSortInPlace(arr, lo, hi)
+	QuickSortInPlace(arr)
 	fmt.Println(arr)
 }
 
