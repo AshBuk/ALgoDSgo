@@ -23,7 +23,7 @@ func mergeSort(arr []int) []int {
 }
 
 func merge(left []int, right []int) []int {
-	result := []int{}
+	var result []int
 	var i, j int
 
 	for i < len(left) && j < len(right) {

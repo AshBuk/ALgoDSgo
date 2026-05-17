@@ -18,8 +18,8 @@ func quickSort(arr []int) []int {
 		return arr
 	}
 
-	left := []int{}
-	right := []int{}
+	var left []int
+	var right []int
 	pivot := arr[0]
 
 	for _, v := range arr[1:] {

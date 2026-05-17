@@ -75,7 +75,7 @@ func (g *Graph) RemoveVertex(vertex int) {
 
 // helper
 func removeFromSlice(slice []int, value int) []int {
-	result := []int{}
+	var result []int
 	for _, v := range slice {
 		if v != value {
 			result = append(result, v)
